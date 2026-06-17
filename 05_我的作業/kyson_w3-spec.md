@@ -152,9 +152,12 @@ flowchart TD
 |---|---|---|---|
 | T1.1 | R1 | Given 客戶 A 存在 / When AI 帶 A 的 email 查 / Then 回 A 基本資料 + 寫 log | 查不到→T4.1 |
 | T2.1 | R2 | Given 寄件人 domain 屬已知客戶 / When 查 / Then 判定為該客戶；CC 未知人不影響判定 | domain 不符→拒絕授信 |
+| T3.1 | R3 | Given 客戶 A 訂閱 ACS / When 收到 A 的來信 / Then 回傳服務別=ACS 供 AI 配對處理 | 多服務→全列 |
 | T4.1 | R4 | Given email 不在名單 / When 查 / Then 回查無 + 提示 + 標待審核 + 列同 domain 窗口 | 空字串/格式錯 |
 | T5.1 | R5 | Given 客戶 A 用 ACS+3DSS / When 查 A / Then 回兩服務及各自 SLA、聯絡人、我方窗口 | 無服務→標 N/A |
 | T6.1 | R6 | Given A 有 1 離職窗口 / When 查 A 窗口 / Then 離職窗口標 inactive 不列入主要建議 | 0 窗口→空清單 |
+| T7.1 | R7 | Given 業務 X 離職、名下 5 家客戶 / When 批次改窗口為業務 Y / Then 5 筆一次更新且各留 Before/After | 匯入格式錯→拒絕並回報 |
+| T10.1 | R10 | Given 標籤清單已定義 / When 對客戶套標籤 / Then 只能選清單內值，不可自由文字 | 未定義標籤→拒絕 |
 | T11.1 | R11 | Given A 同時有 Gold 與 Platinum / When 取 SLA / Then 以最嚴格(Platinum)為準 | 無 SLA→公版 |
 | T13.1 | R13 | Given AI 經 API 查 / When 帶合法參數 / Then 回固定格式結果並寫 log；非法參數回錯誤碼 | 逾時/限流 |
 | T14.1 | R14 | Given AI 提出修改客戶資料 / When 送出 / Then 不直接生效，進後台待 Approve | 未審核前查詢仍見舊值 |
@@ -198,9 +201,12 @@ flowchart TD
 |---|---|---|
 | R1 | §功能 R1 + §設計-流程 | T1.1 |
 | R2 | §功能 R2 + §用例-例外2 | T2.1 |
+| R3 | §功能 R3 + §用例-Happy | T3.1 |
 | R4 | §功能 R4 + §用例-例外2 | T4.1 |
 | R5 | §功能 R5 + §設計-資料 | T5.1 |
 | R6 | §功能 R6 + §設計-資料 | T6.1 |
+| R7 | §功能 R7 + §設計-資料 | T7.1 |
+| R10 | §功能 R10 + §設計-資料 | T10.1 |
 | R11 | §功能 R11 + §設計-資料 | T11.1 |
 | R13 | §功能 R13 + §設計-流程 | T13.1 |
 | R14 | §功能 R14 + §用例-例外3 + §設計-流程 | T14.1 |
@@ -211,8 +217,7 @@ flowchart TD
 | R20 | §功能 R20 + §用例-例外4 | T20.1 |
 | R21 | §功能 R21 + §非功能-可觀測性 | T21.1 |
 | R22 | §功能 R22 + §非功能-可觀測性 | T22.1 |
-| R3, R7, R10 | §功能（Must） | 待補 |
 | R8, R9, R12, R16, R23 | §功能（Should） | 待補（次優先） |
 
-> Must 中 R3/R7/R10 驗收待 W3 課堂補；Should 驗收次優先。
+> ✅ 全部 18 條 Must 皆已對應驗收條件。Should（R8/R9/R12/R16/R23）驗收次優先，留待課堂補。
 > ⚠️ 多條 T 的具體數字（回應秒數、SLO、可信度過期天數）依開放問題拍板後才能定。

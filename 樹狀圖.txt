@@ -1,0 +1,46 @@
+├─01_自學模組
+│      m1-kickoff-slides.pdf
+│      m1-sli-do-poll-results.pdf
+│      m2-elicitation.md
+│      m3-analysis.md
+│      m4-design.md
+│      m5-sdd.md
+│      m6-collaboration.md
+│
+├─02_課堂投影片與圖片
+│      slido- (1) (1).png
+│      slido- (1).png
+│      slido-.png
+│      w2-workshop-slides.pdf
+│      貼上的圖形-1.png
+│
+├─03_範本
+│      spec-template.md
+│      w3-需求清單-template.md
+│
+├─04_課堂產出
+│  ├─個人需求訪談紀錄
+│  │      alan.md
+│  │      andrew.md
+│  │      chloe.md
+│  │      Diego.md
+│  │      ellie.md
+│  │      jesse.md
+│  │      kyson.md
+│  │      Ray.md
+│  │      ryan.md
+│  │      sasha.md
+│  │      wayne.md
+│  │
+│  └─需求衝突紀錄
+│          A組_需求衝突.md
+│          B組_需求衝突.md
+│          C組_需求衝突.md
+│
+├─05_我的作業
+│      kyson_w3-spec.md
+│      kyson_w3-需求清單-精簡版.md
+│      kyson_w3-需求清單.md
+│
+└─06_待辦
+        待辦清單.md
